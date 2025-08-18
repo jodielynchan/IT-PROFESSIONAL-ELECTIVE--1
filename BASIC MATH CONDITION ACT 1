@@ -1,1 +1,46 @@
 
+import java.util.Scanner;
+
+public class SimpleMath {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Enter a number: ");
+        int num1 = scan.nextInt();
+        
+        System.out.println("Enter another number: ");
+        int num2 = scan.nextInt();
+        
+        System.out.println("Pick an operation (1 for add, 2 for subtract, 3 for multiply, 4 for divide): ");
+        int choice = scan.nextInt();
+        
+        int answer;
+        
+        if (choice == 1) {
+            answer = num1 + num2;
+            System.out.println(num1 + " + " + num2 + " = " + answer);
+        }
+        else if (choice == 2) {
+            answer = num1 - num2;
+            System.out.println(num1 + " - " + num2 + " = " + answer);
+        }
+        else if (choice == 3) {
+            answer = num1 * num2;
+            System.out.println(num1 + " * " + num2 + " = " + answer);
+        }
+        else if (choice == 4) {
+            if (num2 == 0) {
+                System.out.println("Can't divide by zero!");
+            }
+            else {
+                answer = num1 / num2;
+                System.out.println(num1 + " / " + num2 + " = " + answer);
+            }
+        }
+        else {
+            System.out.println("Wrong choice! Use 1, 2, 3, or 4.");
+        }
+        
+        scan.close();
+    }
+}
