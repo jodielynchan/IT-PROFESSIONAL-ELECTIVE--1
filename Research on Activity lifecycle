@@ -1,1 +1,42 @@
+public class CustomScreenActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_custom_screen);
+        
+        
+        TextView headerText = findViewById(R.id.headerText);
+        headerText.setText("Welcome to the Custom Screen!");
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        TextView headerText = findViewById(R.id.headerText);
+        headerText.setTextColor(Color.GREEN);
+    }
 
+        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "Welcome back to the Custom Screen!", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences("User Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("lastVisited", "Custom Screen");
+        editor.apply();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("CustomScreen", "Component is no longer visible");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("CustomScreen", "Component is being destroyed");
+    }
+}
